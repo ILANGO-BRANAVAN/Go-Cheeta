@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Go-Cheeta</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+body{
+  background: url("bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.divBody{
+margin-top: 10%;
+background: url("black.jpg");
+width: 100%;
+background-color: transparent;
+height: 400px;
+padding: 5% 0 0 5%;
+color:#fff;
+}
+
+.btnModal{
+  background: none;
+  color:#fff;
+}
+
+.login{
+background-color:white;
+height:500px;
+width:500px;
+margin-left:550px;
+margin-top:-450px;
+display:show;
+position:fixed;
+}
+
+.loginHeader{
+padding: 10% 0 0 10%;
+font-size:2em;
+color:#c0392b;
+}
+
+.textField{
+background-color: transparent;
+   border-style: solid #000;
+   border-width: 0px 0px 2px 0px;
+   border-color: darked;
+   outline:0;
+   color: #000;
+   width:100%;
+}
+
+.formStyle{
+padding: 7% 0 0 10%;
+}
+
+.aStyle{
+font-size:1.2em;
+color:#c0392b;
+padding: 15% 0 0 6%;
+}
+
+.loginButton{
+background-color:#c0392b;
+width:100px;
+color:#fff;
+}
+
+.signup{
+background-color:white;
+height:500px;
+width:500px;
+margin-left:50px;
+margin-top:-450px;
+display:show;
+position:fixed;
+display:none;
+}
+
+.signupButton{
+background-color:#c0392b;
+width:100px;
+color:#fff;
+}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="divBody">
+        <div class="row">
+            <div class="col-md-6"><h2>Don't have an account?</h2></div>
+            <div class="col-md-6"><h2>Already have an account?</h2></div>
+            <div class="w-100"></div>
+            <div class="col-md-6"><h4>Sign up here !!</h4></div>
+            <div class="col-md-6"><h4>Log in here !!</h4></div>
+            <div class="w-100"></div>
+            <div class="col-md-6">
+                <button type="button" id="btnsignup" class="btn btn-default btnModal">SignUp</button>
+            </div>
+            <div class="col-md-6">
+                <button type="button" id="btnlogin" class="btn btn-default btnModal">LogIn</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="login" id="loginDiv">
+        <div class="row">
+            <div class="col-md-4 loginHeader">L O G I N</div>
+        </div>
+        <form class="row" id="signinform">
+            <div class="col-md-9 formStyle"><input type="text" class="textField" placeholder="Email" name="username"/>
+            </div>
+            <div class="col-md formStyle align-seld-end"><i class="glyphicon glyphicon-envelope"></i></div>
+            <div class="w-100"></div>
+            <div class="col-md-9 formStyle"><input type="password" class="textField" placeholder="Password"
+                                                   name="passcode"/></div>
+            <div class="col-md formStyle align-seld-end"><i class="glyphicon glyphicon-lock"></i></div>
+            <div class="w-100"></div>
+            <div class="col-md-9 aStyle"><a href="#" class="aStyle">Forgot password ?</a></div>
+            <div class="col-md pull-md-4 aStyle align-seld-start">
+                <button type="submit" class="btn loginButton">LOG IN</button>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="signup" id="signupDiv">
+        <div class="row">
+            <div class="col-md-4 loginHeader">SIGN UP</div>
+        </div>
+        <form class="row" id="signupform">
+            <div class="col-md-9 formStyle"><input type="text" class="textField" placeholder="FirstName"
+                                                   name="firstName" required/></div>
+            <div class="col-md formStyle align-seld-end"><i class="	glyphicon glyphicon-user"></i></div>
+            <div class="w-100"></div>
+
+            <div class="col-md-9 formStyle"><input type="text" class="textField" placeholder="LastName"
+                                                   name="lastName" required/></div>
+            <div class="col-md formStyle align-seld-end"><i class="	glyphicon glyphicon-user"></i></div>
+            <div class="w-100"></div>
+
+            <div class="col-md-9 formStyle"><input type="text" class="textField" placeholder="Email"
+                                                   name="emailAddress" required/></div>
+            <div class="col-md formStyle align-seld-end"><i class="glyphicon glyphicon-envelope"></i></div>
+            <div class="w-100"></div>
+
+            <div class="col-md-9 formStyle"><input type="text" class="textField" placeholder="Address" name="address"
+                                                   required/>
+            </div>
+            <div class="col-md formStyle align-seld-end"><i class="glyphicon glyphicon-home"></i></div>
+            <div class="w-100"></div>
+
+            <div class="col-md-9 formStyle"><input type="text" class="textField" placeholder="MobileNumber"
+                                                   name="mobileNumber" maxLength="10" required/></div>
+            <div class="col-md formStyle align-seld-end"><i class="glyphicon glyphicon-phone"></i></div>
+            <div class="w-100"></div>
+
+            <div class="col-md-9 formStyle"><input type="password" class="textField" placeholder="Password"
+                                                   name="userPassword" required/></div>
+            <div class="col-md formStyle align-seld-end"><i class="glyphicon glyphicon-lock"></i></div>
+            <div class="w-100"></div>
+
+            <div class="col-md-9 aStyle"><a href="#" class="aStyle"></a></div>
+            <div class="col-md pull-md-4 aStyle align-seld-start">
+                <button type="submit" class="btn loginButton">SIGN UP</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+<script>
+
+var button = document.getElementById('btnsignup');
+button.onclick = function() {
+    var div = document.getElementById('loginDiv');
+    var divs = document.getElementById('signupDiv');
+
+        div.style.display = 'none';
+        divs.style.display = 'block';
+   
+};
+
+var buttonl = document.getElementById('btnlogin');
+buttonl.onclick = function() {
+    var div = document.getElementById('loginDiv');
+    var divs = document.getElementById('signupDiv');
+  
+        div.style.display = 'block';
+        divs.style.display = 'none';
+    
+    
+};
+
+$('#signupform').submit(function(e){
+    console.log('start');
+    var formData = $("#signupform").serialize();
+    e.preventDefault();
+
+    var formData = $(this).serializeArray();
+    var values = {};
+    $.map(formData, function(n, i){
+        values[n['name']] = n['value'];
+    });
+
+    console.log(values);
+
+    $.ajax({
+         url: 'http://localhost:8085/create/customer',
+         type: 'POST',
+         headers: {
+          "Content-Type": "application/json"
+           },
+         dataType:'json',
+         data: JSON.stringify(values),
+         success: function (data) {
+             console.log(data);
+             if(data.statusCode == 1000){
+             alert(data.message);
+              location.reload();
+             }
+         }
+     });
+    console.log('end');
+});
+
+$('#signinform').submit(function(e){
+    console.log('start');
+    var formData = $("#signinform").serialize();
+    e.preventDefault();
+
+    var formData = $(this).serializeArray();
+    var values = {};
+    $.map(formData, function(n, i){
+        values[n['name']] = n['value'];
+    });
+
+    console.log(values);
+
+    $.ajax({
+         url: 'http://localhost:8085/login/user',
+         type: 'POST',
+         headers: {
+          "Content-Type": "application/json"
+           },
+         dataType:'json',
+         data: JSON.stringify(values),
+         success: function (data) {
+             console.log(data);
+             if(data.statusCode == 1000){
+                alert(data.message);
+                if(data.data.userType == 2){
+                    localStorage.setItem("userId", data.data.userId);
+                    window.location.href="customer.html";
+                }
+                if(data.data.userType == 1){
+                    localStorage.setItem("userId", data.data.userId);
+                    window.location.href="admin.html";
+                }
+             }else{
+                alert(data.message);
+             }
+         }
+     });
+    console.log('end');
+});
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Customer</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar-->
+    <div class="border-end bg-white" id="sidebar-wrapper">
+        <div class="sidebar-heading border-bottom bg-light">Customer Panel</div>
+        <div class="list-group list-group-flush">
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Book Ride</a>
+        </div>
+    </div>
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- Top navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+                <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                        <li class="nav-item active"><a class="nav-link" href="index.html" onclick="logout();">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page content-->
+        <div class="container-fluid">
+            <h1 class="mt-4">Book Ride</h1>
+
+            <div class="bs-example">
+                <form class="form-horizontal">
+
+                    <div class="form-group">
+                        <label for="sloc" class="control-label col-xs-2">Source Location</label>
+                        <div class="col-xs-10">
+                            <select class="form-select" aria-label="Default select example" id="sloc" name="slocation">
+                                <option selected>Select</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dloc" class="control-label col-xs-2">Destination Location</label>
+                        <div class="col-xs-10">
+                            <select class="form-select" aria-label="Default select example" id="dloc" name="dloc">
+                                <option selected>Select</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="travelDateTime" class="control-label col-xs-2">TravelDateTime</label>
+                        <div class="col-xs-10">
+                            <input type="datetime-local" id="travelDateTime" name="travelDateTime">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="branch" class="control-label col-xs-2">Branch</label>
+                        <div class="col-xs-10">
+                            <select class="form-select" aria-label="Default select example" id="branch" name="branch">
+                                <option selected>Select</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <div class="col-xs-offset-2 col-xs-10">
+                            <button type="submit" class="btn btn-primary">Book</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="js/scripts.js"></script>
+<script>
+    $( document ).ready(function() {
+        var userId = localStorage.getItem("userId");
+        if(userId == 0){
+            window.location.href="index.html";
+        }
+        sourceLoc();
+
+    });
+        function simple(){
+        console.log('hi');
+            var name=localStorage.getItem("userId");
+            console.log(name);
+        }
+        function logout(){
+            localStorage.setItem("userId", 0);
+        }
+
+        function sourceLoc(){
+        $.ajax({
+         url: 'http://localhost:8085/trip/location/list',
+         type: 'POST',
+         headers: {
+          "Content-Type": "application/json"
+           },
+         dataType:'json',
+         success: function (data) {
+             console.log(data);
+             if(data.statusCode == 1000){
+             var obj = data.data;
+                 $.each(obj, function(k, v) {
+                     var displayVal = v.streetAddress + " - " +v.city;
+                    $('#sloc').append('<option value="' + v.locationId + '">' + displayVal + '</option>');
+                 });
+             }
+         }
+        });
+ }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container" style="padding-top: 23px;
+">
+<div>
+	<button type="button" class="btn btn-primary" onclick="loadCategoryTable();">Load Table</button> 
+</div>
+
+     
+  <table class="table" id="vechileCatTable">
+    <thead>
+      <tr>
+        <th>VehicleCategoryId</th>
+        <th>VehicleCategoryName</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+<script>
+function loadCategoryTable(){
+	$('#vechileCatTable').find('td').remove();
+
+	console.log('start');
+	$.ajax({
+		 url: 'http://localhost:8085/vehicle/get/categories',
+		 type: 'POST',
+		 dataType: 'json',
+		 success: function (data) {
+			 if(data.statusCode == 1000){
+				var obj = data.data;
+					$.each(obj, function(i,v){
+						console.log(v.vehicleCategoryId);
+						console.log(v.vehicleCategoryName);
+						
+						$('#vechileCatTable').find('tbody')
+						.append('<tr>')
+						.append('<td>' + v.vehicleCategoryId + '</td>')
+						.append('<td>' + v.vehicleCategoryName + '</td>')
+						.append('</tr>');
+					});
+			 }else{
+				alert('Error');
+			 }
+		 }
+	 });
+	 console.log('end');
+}
+</script>
+</body>
+</html>
